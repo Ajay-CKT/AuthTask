@@ -44,11 +44,6 @@ const authController = {
       const token = jwt.sign({ id: user._id }, `${SECRETKEY}`, {
         expiresIn: "1h",
       });
-      response.cookie("token", token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-      });
       response
         .status(200)
         .json({ token: token, message: "Logged in successfully" });
